@@ -11,8 +11,9 @@ class GifList extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
-      <ul>{this.renderedGifs()}</ul>
+      <ul>{this.renderedGifs}</ul>
     )
   }
 }

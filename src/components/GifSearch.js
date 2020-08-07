@@ -1,27 +1,35 @@
 import React, { useState } from 'react'
 
-const GifSearch = (props) => {
-  const [searchTerm, setSearchTerm] = useState("");
+class GifSearch extends React.Component {
+  state = {
+    searchTerm: ''
+  }
 
-  const handleSubmit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    props.searchHandler(searchTerm);
+    console.log(this.state.searchTerm, this.props.searchHandler)
+    this.props.searchHandler(this.state.searchTerm);
   };
 
-  return (
-    <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          onChange={(e) => setSearchTerm(e.target.value)}
-          type='text'
-          name='searchTerm'
-          id='searchTerm'
-          value={searchTerm}
-        />
-        <input type='submit' />
-      </form>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <input
+            onChange={(e) => {
+              this.setState({searchTerm: e.target.value})
+              console.log(this.state.searchTerm)}}
+            type='text'
+            name='searchTerm'
+            id='searchTerm'
+            value={this.state.searchTerm}
+          />
+          <input type='submit' />
+        </form>
+      </div>
+    );
+  }
+  
 };
 
 export default GifSearch
