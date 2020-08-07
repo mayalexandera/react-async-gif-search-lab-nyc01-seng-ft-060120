@@ -7,30 +7,32 @@ import GifSearch from '../components/GifSearch'
   `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${apiKey}`;
 
 class GifListContainer extends React.Component {
-    state = {
-      response: {
-        data: [],
-      },
-      searchTerm: "",
-    };
+  state = {
+    response: {
+      data: [],
+    },
+    searchTerm: "",
+  };
 
-  searchHandler = (searchTerm) => {
-    this.setState({searchTerm: searchTerm})
-    console.log(this.state.searchTerm)
-
-    const baseUrl = () => giphyUrl(this.state.searchTerm, apiKey);
-     fetch(baseUrl())
-      .then((response) => response.json())
-      .then(({data}) => this.setState({ response: data }));
+  componentDidMount() {
+    this.onTermSubmit(this.state.searchTerm);
   }
+
+  onTermSubmit = async (searchTerm) => {
+    const baseUrl = () => giphyUrl(searchTerm, apiKey);
+    await fetch(baseUrl())
+      .then((response) => response.json())
+      .then((data) => this.setState({ response: data }));
+  };
+
 
   render() {
     return (
       <div>
-        <GifSearch searchHandler={this.searchHandler}/>
+        <GifSearch searchHandler={this.onTermSubmit} />
         <GifList response={this.state.response.data} />
       </div>
-    )
+    );
   }
 }
 
