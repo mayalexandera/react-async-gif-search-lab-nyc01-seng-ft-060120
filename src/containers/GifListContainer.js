@@ -2,8 +2,8 @@ import React from 'react'
 import GifList from '../components/GifList'
 import GifSearch from '../components/GifSearch'
 
-  const apiKey = 'WQFSCBrFuzxjSLXiPFmaWVhF1WGnoFg3'
-  const giphyUrl = (searchTerm, apiKey) => 
+const apiKey = 'WQFSCBrFuzxjSLXiPFmaWVhF1WGnoFg3'
+const giphyUrl = (searchTerm, apiKey) => 
   `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${apiKey}`;
 
 class GifListContainer extends React.Component {
@@ -12,10 +12,6 @@ class GifListContainer extends React.Component {
       data: [],
     }
   };
-
-  // componentDidMount() {
-  //   this.onTermSubmit(this.state.searchTerm);
-  // }
 
   onTermSubmit = async (searchTerm) => {
     const baseUrl = () => giphyUrl(searchTerm, apiKey);

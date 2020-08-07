@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 class GifSearch extends React.Component {
   state = {
@@ -7,7 +7,6 @@ class GifSearch extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.searchTerm, this.props.searchHandler)
     this.props.searchHandler(this.state.searchTerm);
   };
 
@@ -17,8 +16,7 @@ class GifSearch extends React.Component {
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <input
             onChange={(e) => {
-              this.setState({searchTerm: e.target.value})
-              console.log(this.state.searchTerm)}}
+              this.setState({searchTerm: e.target.value})}}
             type='text'
             name='searchTerm'
             id='searchTerm'

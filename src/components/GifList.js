@@ -4,14 +4,13 @@ class GifList extends React.Component {
 
   renderedGifs = () => {
     return this.props.response.map(gif => {
-      return <li>
+      return <li key={gif.id}>
         <img src={gif.images.original.url} alt='' />
       </li>
      })
   }
 
   render() {
-    console.log(this.props)
     return (
       <ul>{this.renderedGifs()}</ul>
     )
