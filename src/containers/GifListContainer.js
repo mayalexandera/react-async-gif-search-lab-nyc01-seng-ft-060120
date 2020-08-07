@@ -10,13 +10,12 @@ class GifListContainer extends React.Component {
   state = {
     response: {
       data: [],
-    },
-    searchTerm: "",
+    }
   };
 
-  componentDidMount() {
-    this.onTermSubmit(this.state.searchTerm);
-  }
+  // componentDidMount() {
+  //   this.onTermSubmit(this.state.searchTerm);
+  // }
 
   onTermSubmit = async (searchTerm) => {
     const baseUrl = () => giphyUrl(searchTerm, apiKey);
